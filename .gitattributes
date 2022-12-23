@@ -1,2 +1,29 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+import pandas as pd
+import numpy as np
+marks = {'Chemistry':[67,87,77,65],
+         'Physics':[34,56,89,70],
+         'Mathematics':[21,34,67,54],
+         'English':[13,45,78,96]}
+marks_df = pd.DataFrame(marks, index = ['Subodh','Ram','Abdhul','John'])
+marks_df
+
+marks_df['Total']=marks_df['Chemistry']+marks_df['Physics']+marks_df['Mathematics']+marks_df['English']
+marks_df
+
+marks_df.drop(columns = 'Total', inplace = True)
+marks_df
+
+new_marks = marks_df + 5
+new_marks
+
+new_marks = marks_df + [5,50,34,2]
+new_marks
+
+marks_df.apply(np.sum, axis = 1)
+
+marks_df.apply(np.sum, axis = 0)
+
+f = marks_df < 35
+marks_df.mask(f, 'Fail')
+
+
